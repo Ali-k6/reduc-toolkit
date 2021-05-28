@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./App.css";
-import { IRootState } from "./redux/store";
+import { AppDispatch, useAppSelector } from "./redux/store";
 import { decrement, increment, incrementByValue } from "./redux/reducer";
 
 const App = () => {
-  const count = useSelector<IRootState>((state) => state.counter.value);
-  const dispatch = useDispatch();
+  const { value } = useAppSelector((state) => state.counter);
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <div className="container">
-      <h1>Count:{count}</h1>
+      <h1>Count:{value}</h1>
       <div className="buttons">
         <button onClick={() => dispatch(increment())}>increment</button>
         <button onClick={() => dispatch(decrement())}>decrement</button>
