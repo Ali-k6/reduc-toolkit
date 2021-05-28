@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import { IRootState } from "./redux/store";
+import { decrement, increment, incrementByValue } from "./redux/reducer";
 
-function App() {
+const App = () => {
+  const count = useSelector<IRootState>((state) => state.counter.value);
+  const dispatch = useDispatch();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Count:{count}</h1>
+      <div className="buttons">
+        <button onClick={() => dispatch(increment())}>increment</button>
+        <button onClick={() => dispatch(decrement())}>decrement</button>
+        <button onClick={() => dispatch(incrementByValue(5))}>
+          increment by value 5
+        </button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
