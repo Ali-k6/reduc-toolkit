@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
@@ -31,4 +35,14 @@ button {
 button:hover {
   background-color: white;
   color: dodgerblue;
+}
+
+.user__data_wrapper {
+  margin-top: 2em;
+  height: 200px;
+}
+
+.user__data_user__details > p {
+  margin: 12px auto;
+  font-size: 1.5em;
 }
